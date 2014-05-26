@@ -1,0 +1,7 @@
+{
+    "port": 1337,
+    "ip": "127.0.0.1",
+    "index": "index.html",
+    "fnftext": "404 Not Found <hr> <i>nodeWeb</i>",
+    "docroot": "./"
+}
