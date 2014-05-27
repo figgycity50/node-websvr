@@ -1,0 +1,18 @@
+{
+    "name": "web-svr",
+    "description": "an insanely small web server",
+    "version": "1.0.0",
+    "dependencies": {
+        "mime": "~1.2.11"
+    },
+    "main": "web.js",
+    "author": {
+        "name": "George Brooke",
+        "email": "gbrooke@outlook.com",
+        "url": "http://github.com/figgycity50"
+    },
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/figgycity50/node-websvr.git"
+    }
+}

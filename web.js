@@ -1,13 +1,14 @@
-var base = "C:\Users\George\Google Drive\nodeWeb"
-var config = "./config.json";
 var http = require('http');
 var fs = require('fs');
 var mime = require('mime');
+var config = "./config.json";
 var confOpts = {};
-fs.readFile(config, function (err, data) {
+fs.readFile(config, {encoding: "ASCII"}, function (err, data) {
     confOpts = JSON.parse(data);
-}
-
+    console.log(confOpts);
+});
+setTimeout(gogogo, 5000);
+function gogogo() {
 http.createServer(function (req, res) {
     if (req.url == "/") {
         url = "/index.html"
@@ -24,4 +25,5 @@ http.createServer(function (req, res) {
         }
     });
 }).listen(confOpts.port, confOpts.ip);
-console.log('Server running at http://127.0.0.1:1337/');
+console.log('Server running at http://' + confOpts.ip + ':' + confOpts.port);
+}
