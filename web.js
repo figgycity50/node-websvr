@@ -1,6 +1,7 @@
 var http = require('http');
 var fs = require('fs');
 var mime = require('mime');
+var markdown = require( "markdown" ).markdown;
 var config = "./config.json";
 var confOpts = {};
 fs.readFile(config, {encoding: "ASCII"}, function (err, data) {
@@ -20,8 +21,13 @@ http.createServer(function (req, res) {
             res.writeHead(404, {'Content-Type': 'text/html'});
             res.end(confOpts.fnftext); 
         } else {
+            console.log(mime.lookup(confOpts.docroot + url));
             res.writeHead(200, {'Content-Type': mime.lookup(confOpts.docroot + url)});
-            res.end(data); 
+            if (mime.lookup(confOpts.docroot + url) == "text/x-markdown") {
+                res.end(markdown.toHTML(data));
+            } else {
+                res.end(data); 
+            }
         }
     });
 }).listen(confOpts.port, confOpts.ip);
